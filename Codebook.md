@@ -3,8 +3,8 @@ The purpose of this project is to download and tidy data collected from wearable
 
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
-## 1. Download data, unzip file and find the names of relevant files:
-This code chunk needs to be ran prior to the other chunks, as it lists all the relevant files in the directory. The following code chunk downloads the data from this link: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip. The data is saved in a directory called dataset. Files in the directory are listed to enable subsequent analysis:
+## 1. Download data, unzip file and find the paths to relevant files:
+This code chunk needs to be ran prior to the other chunks, as it lists all the relevant file paths in the directory. Data is downloaded from this link: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip. The data is saved in a directory called dataset. Files in the directory are listed to enable subsequent analysis:
 
 ```{r}
 download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",destfile="./dataset.zip")
@@ -20,7 +20,7 @@ features <- read.table("./dataset/UCI HAR Dataset/features.txt")
 ```
 
 ## 3.1 Make a table for test data
-This chunk opens the data collected for the test group and labels each column with 'features'. It then adds two columns: Activity and Subject to create a new table called test_df.
+This chunk opens the data collected for the test group and labels each column with its corresponding feature. It then adds two columns: Activity and Subject to create a new table called test_df.
 
 ```{r}
 x_test <- read.table("./dataset/UCI HAR Dataset/test/X_test.txt")
@@ -33,7 +33,7 @@ test_df <- cbind(x_test_labels,subject_test,x_test)
 ```
 
 ## 3.2 Make a table for train data
-This chunk opens the data collected for the train group and labels each column with 'features'. It then adds two columns: Activity and Subject to create a new table called train_df.
+This chunk opens the data collected for the train group and labels each column with its corresponding feature. It then adds two columns: Activity and Subject to create a new table called train_df.
 
 ```{r}
 x_train <- read.table("./dataset/UCI HAR Dataset/train/X_train.txt")
@@ -46,7 +46,7 @@ train_df <- cbind(x_train_labels,subject_train,x_train)
 ```
 
 ## 4. Merge test and train data and keep only mean and standard deviation columns
-This chunk merges test and train tables and makes a new table with columns containing data and mean and standard deviation.
+This chunk merges test and train tables and makes a new table with columns containing mean and standard deviation data.
 
 ```{r}
 merge_df <-rbind(test_df,train_df)
@@ -78,7 +78,7 @@ colnames(merge_subset) <- names(merge_subset) %>%
 ```
 
 ## 6. Make a second table
-The following code re-organizes the first table by Activity and Subject, and takes the average of each variable. The new table is named tidy_data_set.
+The following code re-organizes the data based on Activity and Subject, and takes the average of each variable. The new table is named tidy_data_set.
 
 ```{r}
 tidy_data_set <- merge_subset %>%
