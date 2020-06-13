@@ -1,11 +1,5 @@
----
-title: "Codebook"
-author: "BXSu"
-date: "13/06/2020"
----
-
 ## Getting and Cleaning Data Course Project
-The purpose of this project is to download and tidy data collected from wearable computing.Companies like Fitbit, Nike, and Jawbone Up are racing to develop the most advanced algorithms to attract new users. The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained:
+The purpose of this project is to download and tidy data collected from wearable computing. Companies like Fitbit, Nike, and Jawbone Up are racing to develop the most advanced algorithms to attract new users. The data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained:
 
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
@@ -26,7 +20,7 @@ features <- read.table("./dataset/UCI HAR Dataset/features.txt")
 ```
 
 ## 3.1 Make a table for test data
-This chunk opens the data collected for the test group and labels each column with 'features'. It then add two columns: Activity and Subject to create a new table called test_df.
+This chunk opens the data collected for the test group and labels each column with 'features'. It then adds two columns: Activity and Subject to create a new table called test_df.
 
 ```{r}
 x_test <- read.table("./dataset/UCI HAR Dataset/test/X_test.txt")
@@ -39,7 +33,7 @@ test_df <- cbind(x_test_labels,subject_test,x_test)
 ```
 
 ## 3.2 Make a table for train data
-This chunk opens the data collected for the train group and labels each column with 'features'. It then add two columns: Activity and Subject to create a new table called train_df.
+This chunk opens the data collected for the train group and labels each column with 'features'. It then adds two columns: Activity and Subject to create a new table called train_df.
 
 ```{r}
 x_train <- read.table("./dataset/UCI HAR Dataset/train/X_train.txt")
@@ -52,7 +46,7 @@ train_df <- cbind(x_train_labels,subject_train,x_train)
 ```
 
 ## 4. Merge test and train data and keep only mean and standard deviation columns
-This chunk merges test and train tables and makes a new table that only contains columns containing data and mean and standard deviation.
+This chunk merges test and train tables and makes a new table with columns containing data and mean and standard deviation.
 
 ```{r}
 merge_df <-rbind(test_df,train_df)
