@@ -61,6 +61,6 @@ colnames(merge_subset) <- names(merge_subset) %>%
 tidy_data_set <- merge_subset %>%
   group_by(Subject,Activity) %>%
   summarize_all(funs(mean))
-write.table(tidy_data_set,"./tidy_data_set.txt")
+write.table(tidy_data_set,"./tidy_data_set.txt",row.names = FALSE)
 
 
